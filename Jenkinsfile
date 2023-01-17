@@ -21,12 +21,10 @@ pipeline {
             sh 'docker build -t docker-python:latest .'
           }
         }
-        stage('Deploy Image') {
+        stage('Push Image') {
           steps{
             script {
-              docker.withRegistry( '', registryCredential ) {
-                dockerImage.push()
-              }
+              sh 'docker push docker-python'
             }
           }
         }
