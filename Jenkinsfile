@@ -18,7 +18,7 @@ pipeline {
         stage('Docker Build') {
             agent any
           steps {
-	    sh 'docker build -t https://github.com/HCombreas/simple-python-pyinstaller-app/blob/master/Dockerfile'
+            sh 'docker build -t python:latest .'
           }
         }
         stage('Test') {
