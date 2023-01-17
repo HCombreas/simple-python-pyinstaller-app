@@ -18,7 +18,15 @@ pipeline {
         stage('Docker Build') {
             agent any
           steps {
-            sh 'docker build -t python:latest .'
+            sh 'docker build -t docker-python:latest .'
+          }
+        }
+        stage('Deploy Image') {
+          steps{
+            script {
+              docker.withRegistry( '', registryCredential ) {
+              dockerImage.push()
+            }
           }
         }
         stage('Test') {
