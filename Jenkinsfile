@@ -15,6 +15,12 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
+        stage('Docker Build') {
+            agent any
+          steps {
+	    sh 'docker build -t https://github.com/HCombreas/simple-python-pyinstaller-app/blob/master/Dockerfile'
+          }
+        }
         stage('Test') {
             agent {
                 docker {
