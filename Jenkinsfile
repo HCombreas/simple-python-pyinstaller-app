@@ -18,14 +18,12 @@ pipeline {
         stage('Docker Build') {
             agent any
           steps {
-            dockerImage = docker.build("docker-python:latest")
+            sh 'docker build -t docker-python:latest .'
           }
         }
         stage('Push Image') {
           steps{
-            script {
               sh 'docker push dockerImage'
-            }
           }
         }
         stage('Test') {
