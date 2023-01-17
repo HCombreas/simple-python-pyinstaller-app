@@ -1,9 +1,16 @@
 pipeline {
-    agent none
+    agent any
     options {
         skipStagesAfterUnstable()
     }
     stages {
+        stage("Hello") {
+            steps {
+                sleep 300 // 5 minutes
+                echo 'Hello World'
+            }
+        }
+
         stage('Build') {
             agent {
                 docker {
