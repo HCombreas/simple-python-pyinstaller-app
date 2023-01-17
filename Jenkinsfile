@@ -24,7 +24,7 @@ pipeline {
         stage('Push Image') {
           steps{
             script {
-              sh 'docker push docker-python'
+              sh 'docker push ./docker-python'
             }
           }
         }
