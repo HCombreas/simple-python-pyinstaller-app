@@ -24,7 +24,7 @@ pipeline {
         stage('Push Image') {
             agent any
           steps{
-              sh 'docker push dockerImage'
+              sh 'docker push docker-python'
           }
         }
         stage('Test') {
