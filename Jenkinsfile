@@ -4,8 +4,16 @@ registry = "combreas/test1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
+
 agent any
 stages {
+stage("build & SonarQube analysis") {
+node {
+withSonarQubeEnv('My SonarQube Server') {
+sh 'mvn clean package sonar:sonar'
+}
+}
+}
 stage('Building our image') {
 steps{
 script {
@@ -32,3 +40,11 @@ dockerImage.run()
 }
 }
 
+
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
+}
+}
