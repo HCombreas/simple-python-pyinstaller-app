@@ -33,7 +33,9 @@ dockerImage.run()
 }
 stage('Ping image')00 {
 steps{
+script{
 sh 'docker ping dockerImage'
+}
 }
 }
 
