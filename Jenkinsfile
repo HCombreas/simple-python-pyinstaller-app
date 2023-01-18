@@ -7,13 +7,6 @@ dockerImage = ''
 
 agent any
 stages {
-stage("build & SonarQube analysis") {
-node {
-withSonarQubeEnv('My SonarQube Server') {
-sh 'mvn clean package sonar:sonar'
-}
-}
-}
 stage('Building our image') {
 steps{
 script {
