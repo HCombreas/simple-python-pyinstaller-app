@@ -4,7 +4,7 @@ registry = "combreas/test1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
-agent any
+
 
 node {
   stage('SCM') {
@@ -16,6 +16,7 @@ node {
     } // submitted SonarQube taskId is automatically attached to the pipeline context
   }
 }
+agent any
 stages {
 stage('Building our image') {
 steps{
