@@ -26,7 +26,7 @@ stage('run our image') {
 steps{
 script {
 docker.withRegistry( '', registryCredential ) {
-dockerImage.run()
+sh('docker run -d --name dockertest -p 8091 combreas/test1')
 }
 }
 }
@@ -34,7 +34,7 @@ dockerImage.run()
 stage('ping our docker') {
 steps{
 script {
-sh('ping combreas/test1')
+sh('ping dockertest')
 }
 }
 }
