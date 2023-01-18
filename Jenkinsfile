@@ -31,6 +31,15 @@ dockerImage.run()
 }
 }
 }
+stage('ping our docker') {
+steps{
+script {
+sh('ping combreas/test1')
+}
+}
+}
+}
+
 stage('Cleaning up') {
 steps{
 sh "docker rmi $registry:$BUILD_NUMBER"
