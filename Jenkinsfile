@@ -6,7 +6,7 @@ dockerImage = ''
 }
 agent any
 stages {
-snode {
+node {
   stage('SCM') {
     git 'https://github.com/foo/bar.git'
   }
