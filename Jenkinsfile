@@ -26,7 +26,7 @@ stage('run our image') {
 steps{
 script {
 docker.withRegistry( '', registryCredential ) {
-dockerImage.run(dockertest)
+dockerImage.run()
 }
 }
 }
@@ -34,7 +34,7 @@ dockerImage.run(dockertest)
 stage('ping our docker') {
 steps{
 script {
-sh('dockertest')
+sh('ping google.com')
 }
 }
 }
