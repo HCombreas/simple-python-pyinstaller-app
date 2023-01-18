@@ -22,6 +22,15 @@ dockerImage.push()
 }
 }
 }
+stage('run our image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.run()
+}
+}
+}
+}
 stage('Cleaning up') {
 steps{
 sh "docker rmi $registry:$BUILD_NUMBER"
