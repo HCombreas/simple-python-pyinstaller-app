@@ -36,8 +36,6 @@ steps{
 sh 'docker ping dockerImage'
 }
 }
-}
-
 
 stage('Cleaning up') {
 steps{
