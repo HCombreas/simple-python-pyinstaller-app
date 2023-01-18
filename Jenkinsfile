@@ -5,7 +5,7 @@ registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
 agent any
-stages {
+
 node {
   stage('SCM') {
     git 'https://github.com/foo/bar.git'
@@ -16,6 +16,7 @@ node {
     } // submitted SonarQube taskId is automatically attached to the pipeline context
   }
 }
+stages {
 stage('Building our image') {
 steps{
 script {
