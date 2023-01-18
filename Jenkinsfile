@@ -6,13 +6,15 @@ dockerImage = ''
 }
 agent any
 stages {
-stage("build & SonarQube analysis") {
-agent any
-steps {
-ithSonarQubeEnv('My SonarQube Server') {
-sh 'mvn clean package sonar:sonar'
-}
-}
+snode {
+  stage('SCM') {
+    git 'https://github.com/foo/bar.git'
+  }
+  stage('SonarQube analysis') {
+    withSonarQubeEnv('My SonarQube Server') {
+      sh 'mvn clean package sonar:sonar'
+    } // submitted SonarQube taskId is automatically attached to the pipeline context
+  }
 }
 stage('Building our image') {
 steps{
