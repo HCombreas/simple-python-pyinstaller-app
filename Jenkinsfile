@@ -38,7 +38,7 @@ sh('ping combreas/test1')
 }
 }
 }
-}
+
 
 stage('Cleaning up') {
 steps{
