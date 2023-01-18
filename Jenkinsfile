@@ -1,4 +1,9 @@
 pipeline {
+    environment{
+        registry = hugocombreas@yahoo.fr/dockerpython"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
+        }
     agent none
     options {
         skipStagesAfterUnstable()
@@ -41,7 +46,7 @@ pipeline {
                     junit 'test-reports/results.xml'
                 }
             }
-        }
+a        }
         stage('Deliver') { 
             agent any
             environment { 
