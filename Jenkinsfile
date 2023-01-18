@@ -31,10 +31,9 @@ dockerImage.run()
 }
 }
 }
-stage('ping our docker') {
+stage('Ping image')00 {
 steps{
-script {
-sh('ping google.com')
+sh 'docker ping dockerImage'
 }
 }
 }
