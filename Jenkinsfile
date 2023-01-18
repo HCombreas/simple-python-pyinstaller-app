@@ -31,18 +31,4 @@ dockerImage.run()
 }
 }
 }
-stage('Ping image'){
-steps{
-script{
-sh 'docker ping dockerImage'
-}
-}
-}
 
-stage('Cleaning up') {
-steps{
-sh "docker rmi $registry:$BUILD_NUMBER"
-}
-}
-}
-}
