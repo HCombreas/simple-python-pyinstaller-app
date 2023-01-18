@@ -4,7 +4,6 @@ registry = "combreas/test1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
-
 agent any
 stages {
 stage('Building our image') {
@@ -32,8 +31,6 @@ dockerImage.run()
 }
 }
 }
-
-
 stage('Cleaning up') {
 steps{
 sh "docker rmi $registry:$BUILD_NUMBER"
