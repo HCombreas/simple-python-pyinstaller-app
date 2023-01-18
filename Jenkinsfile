@@ -4,24 +4,19 @@ registry = "combreas/test1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
-
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+}
 agent any
 stages {
-stage('SCM') {
-steps {
-git url: 'https://github.com/HCombreas/simple-python-pyinstaller-app'
-}
-}
-stage('build && SonarQube analysis') {
-steps {
-withSonarQubeEnv('My SonarQube Server') {
-// Optionally use a Maven environment you've configured already
-withMaven(maven:'Maven 3.5') {
-sh 'mvn clean package sonar:sonar'
-}
-}
-}
-}
 stage("Quality Gate") {
 steps {
 timeout(time: 1, unit: 'HOURS') {
