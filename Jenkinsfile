@@ -9,7 +9,7 @@ agent any
 stages {
 stage('SCM') {
 steps {
-git url: 'https://github.com/foo/bar.git'
+git url: 'https://github.com/HCombreas/simple-python-pyinstaller-app'
 }
 }
 stage('build && SonarQube analysis') {
