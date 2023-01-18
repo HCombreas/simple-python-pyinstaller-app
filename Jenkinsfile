@@ -1,6 +1,6 @@
 pipeline {
     environment{
-        registry = hugocombreas@yahoo.fr/dockerpython"
+        registry = "combreas/dockerpython"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
         }
